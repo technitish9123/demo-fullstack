@@ -1,5 +1,7 @@
 const express = require('express');
 const axios = require('axios');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -7,14 +9,16 @@ const PORT = process.env.PORT || 8000;
 app.use(express.json());
 
 // ! constants for API URLs
-const AUTH_URL = 'http://20.244.56.144/train/auth';
-const TRAINS_URL = 'http://20.244.56.144/train/trains';
+const AUTH_URL = `${process.env.BASEURL}/train/auth`;
+const TRAINS_URL = `${process.env.BASEURL}/train/trains`;
 
 const clientId = process.env.clientID;
 const clientSecret = process.env.clientSecret;
 
 let authToken = '';
 let tokenExpiration = 0; 
+
+console.log(tokenExpiration)
 
 // ! --------------------------------------------------------------------------------------------------------
 // !
@@ -26,16 +30,18 @@ async function refreshAuthToken() {
   try {
     const response = await axios.post(AUTH_URL, {
       companyName: 'nmit',
-      clientID: process.env.clientID || "28aa38cc-a845-4a71-869e-d1f8a20c8a7b",
+      clientID: process.env.clientID,
       ownerName: 'nitishkumar',
       ownerEmail: 'kumarnitish072001@gmail.com',
       rollNo: '1NT20IS102',
-      clientSecret: process.env.clientSecret || "ZmwekIUaxCgSQQon"
+      clientSecret: process.env.clientSecret 
     });
 
     authToken = response.data.access_token;
     const expiresIn = response.data.expires_in;
-    tokenExpiration = Date.now() + expiresIn * 1000; 
+    tokenExpiration =  expiresIn*1000;
+    console.log(tokenExpiration)
+    console.log( Date.now())
   } catch (error) {
     console.error('Error obtaining authorization token:', error);
   }
@@ -96,7 +102,15 @@ app.get('/trains', async (req, res) => {
     }
   });
   
-  
+  app.get('/refreshToken', async (req, res) => {
+    try {
+    await  refreshAuthToken();
+    res.json("success");
+    } catch (error) {
+      console.error('Error getting train details:', error.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
 
 
 app.listen(PORT, () => {
