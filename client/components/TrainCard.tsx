@@ -8,7 +8,7 @@ interface TrainCardProps {
 const TrainCard: React.FC<TrainCardProps> = ({ train }) => {
   return (
     <Link href={`/train/${train?.trainNumber}`}>
-      <div className="bg-white shadow-md p-6 rounded-md transition-transform transform hover:scale-105">
+      <div className="bg-slate-100 shadow-md p-6 rounded-md transition-transform transform hover:scale-105">
         <h2 className="text-xl font-semibold mb-2">{train?.trainName}</h2>
         <p className="text-gray-600 mb-1">Train Number: {train?.trainNumber}</p>
         <p className="text-gray-600 mb-3">

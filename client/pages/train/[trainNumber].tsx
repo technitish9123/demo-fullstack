@@ -8,7 +8,7 @@ const TrainDetailsPage = ({ train }: any) => {
   return (
     <Layout>
       <div className="flex justify-center items-center h-screen">
-        <div className="bg-white shadow-md p-8 rounded-lg w-96">
+        <div className="bg-slate-100 shadow-md p-8 rounded-lg w-96">
           <h1 className="text-2xl font-semibold mb-4">Train Details</h1>
           <h2 className="text-xl font-semibold mb-2">{train?.trainName}</h2>
           <p className="text-gray-600 mb-1">
