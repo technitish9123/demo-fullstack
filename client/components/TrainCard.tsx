@@ -33,7 +33,7 @@ const TrainCard: React.FC<TrainCardProps> = ({ train }) => {
           <div className="flex items-center">
             <p className="text-gray-700 mr-2">Sleeper Price:</p>
             <p className="text-gray-900 font-semibold">
-              ${train?.price.sleeper}
+              rs {train?.price.sleeper}
             </p>
           </div>
           <div className="flex items-center">
