@@ -1,5 +1,3 @@
-Absolutely, I'd be happy to provide a more detailed README.md template for your project:
-
 
 # Train Status Tracker
 
@@ -39,7 +37,7 @@ Train Status Tracker is a web application that allows users to track real-time i
 
 - Frontend: React.js, Next.js, Tailwind CSS.
 - Backend: Node.js, Express.js.
-- Real-time Updates: WebSocket.
+- Real-time Updates: poling.
 - API Requests: Axios.
 
 ## Getting Started
@@ -60,7 +58,7 @@ Train Status Tracker is a web application that allows users to track real-time i
 2. Navigate to the project directory:
 
    ```bash
-   cd train-status-tracker
+   cd demo-fullstack
    ```
 
 3. Install dependencies:
@@ -87,7 +85,7 @@ Train Status Tracker is a web application that allows users to track real-time i
 
 ## Real-time Updates
 
-The application utilizes WebSocket technology to provide real-time updates. Whenever there's a change in train information on the server, the changes are pushed to the client in real-time, ensuring that users always have the latest data.
+The application utilizes poling to provide real-time updates.
 
 ## Contributing
 
